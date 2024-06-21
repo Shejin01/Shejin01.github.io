@@ -1,16 +1,30 @@
 body {
-	/*background: linear-gradient(90deg, #121abd, #af0946);*/
 	background-color: #02010A;
 	color: white;
-
 	text-align: center;
+	margin: 0px;
+	
+	font-family: "JetBrains Mono", monospace;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+h1 {
+	font-size: 48px;
+	margin: 8px;
+}
+
+p {
+	font-size: 24px;
+	margin: 8px;
 }
 
 .glass {
 	background-color: rgba(255, 255, 255, 0.25);
 	backdrop-filter: blur(10px);
 	box-shadow: 0px 8px 32px 0px rgba( 255, 255, 255, 0.1 );
-	color: black;
+	color: rgba( 255, 255, 255, 0.8);
 
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	border-radius: 5px;
@@ -19,14 +33,16 @@ body {
 
 .glass:hover {
 	background-color: rgba(255, 255, 255, 0.5);
-	scale: 1.05;
 }
 
-#items {
+.container {
 	position: absolute;
-	left: 50%;
 	top: 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
+
+	width: fit-content;
+	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -36,28 +52,16 @@ body {
 	width: 200px;
 	height: 75px;
 	padding: 5px;
+	margin: 5px;
+	text-align: center;
+	align-content: center;
 
-	animation: fadeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+	animation: FadeIn 0.25s ease-in-out;
 }
 
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-		top: 60%;
-	}
-	100% {
-		opacity: 1;
-		top: 50%;
-	}
-}
-
-.item p {
+.item > p {
 	font-size: 24px;
-	position: relative;
 	margin: 0px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 }
 
 .credit {
@@ -67,10 +71,33 @@ body {
 	padding: 5px;
 }
 
-.credit a {
+.credit > a {
 	text-decoration: none;
 	font-size: 24px;
-	color: black;
+	color: rgba( 255, 255, 255, 0.8);
 	position: relative;
 	bottom: 10px;
+}
+
+@media screen and (orientation: portrait) {
+	.item {
+		width: 400px;
+		height: 150px;
+		border-radius: 15px;
+		border-width: 2px;
+		box-shadow: 0px 16px 64px 0px rgba( 255, 255, 255, 0.1 );
+	}
+
+	.item > p {
+		font-size: 36px;
+	}
+}
+
+@keyframes FadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opactiy: 1;
+	}
 }
