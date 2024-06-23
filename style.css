@@ -7,6 +7,7 @@ body {
 	color: white;
 	text-align: center;
 	margin: 0px;
+	padding: 5px;
 	
 	font-family: "JetBrains Mono", monospace;
 	font-optical-sizing: auto;
@@ -18,13 +19,13 @@ body {
 
 .heading {
 	position: relative;
-	font-size: 48px;
+	font-size: 4em;
 	margin: 8px;
 	animation: startup-moveRight 0.5s var(--easeOutBack);
 }
 
 p {
-	font-size: 24px;
+	font-size: 2em;
 	margin: 8px;
 }
 
@@ -46,6 +47,7 @@ p {
 
 .glass:hover {
 	background-color: rgba(255, 255, 255, 0.5);
+	scale: 1.05;
 }
 
 .container {
@@ -60,7 +62,7 @@ p {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	animation: startup-grow 0.25s var(--easeOutBack);
+	animation: startup-grow 0.5s var(--easeOutBack);
 }
 
 .item {
@@ -71,42 +73,74 @@ p {
 	text-align: center;
 	align-content: center;
 
-	animation: FadeIn 0.25s ease-in-out;
+	animation: FadeIn 0.5s ease-in-out;
 }
 
 .item > p {
 	font-size: 24px;
 	margin: 0px;
+	user-select: none;
 }
 
-.credit {
+.links {
 	position: absolute;
-	bottom: 5px;
-	right: 5px;
-	padding: 5px;
-	margin: 5px;
-	animation: startup-credit 0.5s var(--easeOutBack);
+
+	font-size: 0.5em;
+	bottom: 0px;
+	align-content: center;
+
+	animation: startup-credit-moveRight 0.5s var(--easeOutBack);
 }
 
-.credit > a {
-	text-decoration: none;
-	font-size: 24px;
-	color: rgba( 255, 255, 255, 0.8);
+.links > img {
+	vertical-align: super;
+}
+
+.links > a {
+	font-size: 2.5em;
 	position: relative;
 	bottom: 10px;
 }
 
+.credit {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 0.75em;
+}
+
 @media screen and (orientation: portrait) {
+	.heading {
+		font-size: 6em;
+	}
+
+	.subheading {
+		font-size: 3em;
+	}
+
 	.item {
-		width: 400px;
-		height: 150px;
+		width: 500px;
+		height: 175px;
 		border-radius: 15px;
 		border-width: 2px;
-		box-shadow: 0px 16px 64px 0px rgba( 255, 255, 255, 0.1 );
+		box-shadow: 0px 16px 64px 0px rgba( 255, 255, 255, 0.15 );
 	}
 
 	.item > p {
-		font-size: 36px;
+		font-size: 3rem;
+	}
+	
+	.links {
+		font-size: 1em;
+	}
+
+	.links > img {
+		width: 48px;
+		height: 48px;
+	}
+
+	.credit {
+		font-size: 1em;
 	}
 }
 
@@ -138,12 +172,21 @@ p {
 }
 
 
-@keyframes startup-credit {
+@keyframes startup-credit-moveLeft {
 	0% {
 		right: -25%;
 	}
 	100% {
 		right: 0%;
+	}
+}
+
+@keyframes startup-credit-moveRight {
+	0% {
+		left: -25%;
+	}
+	100% {
+		left: 0%;
 	}
 }
 
