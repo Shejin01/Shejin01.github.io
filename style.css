@@ -1,3 +1,7 @@
+:root {
+	--easeOutBack: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 body {
 	background-color: #02010A;
 	color: white;
@@ -8,16 +12,25 @@ body {
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
+
+	overflow: hidden;
 }
 
-h1 {
+.heading {
+	position: relative;
 	font-size: 48px;
 	margin: 8px;
+	animation: startup-moveRight 0.5s var(--easeOutBack);
 }
 
 p {
 	font-size: 24px;
 	margin: 8px;
+}
+
+.subheading {
+	position: relative;
+	animation: startup-moveLeft 0.5s var(--easeOutBack);
 }
 
 .glass {
@@ -40,12 +53,14 @@ p {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	transform-origin: 0% 0%;
 
 	width: fit-content;
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	animation: startup-grow 0.25s var(--easeOutBack);
 }
 
 .item {
@@ -69,6 +84,8 @@ p {
 	bottom: 5px;
 	right: 5px;
 	padding: 5px;
+	margin: 5px;
+	animation: startup-credit 0.5s var(--easeOutBack);
 }
 
 .credit > a {
@@ -99,5 +116,42 @@ p {
 	}
 	100% {
 		opactiy: 1;
+	}
+}
+
+@keyframes startup-moveRight {
+	0% {
+		left: -10%
+	}
+	100% {
+		left: 0%;
+	}
+}
+
+@keyframes startup-moveLeft {
+	0% {
+		right: -10%
+	}
+	100% {
+		right: 0%;
+	}
+}
+
+
+@keyframes startup-credit {
+	0% {
+		right: -25%;
+	}
+	100% {
+		right: 0%;
+	}
+}
+
+@keyframes startup-grow {
+	0% {
+		scale: 0;
+	}
+	100% {
+		scale: 1;
 	}
 }
